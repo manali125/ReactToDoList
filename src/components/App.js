@@ -1,7 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import Header from './Header';
 import ListPreview from './ListPreview';
-import data from '../data';
+
 
 class App extends React.Component {
 	state = {
@@ -9,9 +10,16 @@ class App extends React.Component {
 		movie: []
 	};   
 	componentDidMount() {
-		this.setState({
-			movie: data.movie
-		});
+       axios.get('/api/movie')
+         .then(resp => {
+         	this.setState({
+				movie: resp.data.movie
+			});
+         })
+         .catch(console.error)
+
+
+		
 	}
 	componentWillUnmount() {
 		
