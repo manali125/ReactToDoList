@@ -3,7 +3,7 @@ import React,{ Component } from 'react';
 
 class ListPreview extends Component {
 	handleClick = () => {
-      console.log(this.props.title);
+      this.props.onClick(this.props.id);
 	};
 	render(){
 		return (
@@ -19,7 +19,9 @@ class ListPreview extends Component {
 }
 
 ListPreview.propTypes = {
-   title: React.PropTypes.string.isRequired
+   id: React.PropTypes.number.isRequired,	
+   title: React.PropTypes.string.isRequired,
+   onClick: React.PropTypes.func.isRequired,
 };
 
 export default ListPreview;

@@ -1,11 +1,14 @@
 import React from 'react';
 import ListPreview from './ListPreview';
 
-const MovieList = ({ movie }) => (
+const MovieList = ({ movie, onMovieClick }) => (
   <div className="MovieList">
      
 	            {movie.map(movie =>
-                   <ListPreview key = {movie.id} {...movie}/>
+                   <ListPreview 
+                    key = {movie.id} 
+                    onClick = {onMovieClick} 
+                    {...movie}/>
 
 	            )}
 	
@@ -13,7 +16,8 @@ const MovieList = ({ movie }) => (
 )
 
 MovieList.propTypes = {
-   movie: React.PropTypes.array	
+   movie: React.PropTypes.array,
+   onMovieClick: React.PropTypes.func.isRequired,	
 };
 
 export default MovieList;
