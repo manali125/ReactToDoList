@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Header from './Header';
-import ListPreview from './ListPreview';
+import MovieList from './MovieList';
 
 
 class App extends React.Component {
@@ -28,12 +28,7 @@ class App extends React.Component {
 		return (
 	        <div className="App">
 	            <Header message={this.state.pageHeader}/>
-	            <div>
-	            {this.state.movie.map(movie =>
-                   <ListPreview key = {movie.id} {...movie}/>
-
-	            )}
-                </div>
+	            <MovieList movie = {this.state.movie}/>
 			</div>  
 			);
 	}
