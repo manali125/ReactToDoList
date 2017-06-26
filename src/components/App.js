@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './Header';
 import MovieList from './MovieList';
 import Movie from './Movie';
+import * as api from '../api';
 
 const pushState = (obj,url) =>
   window.history.pushState(obj,'',url);
@@ -33,12 +34,16 @@ class App extends React.Component {
          { currentMovieId: movieId},
          `/movie/${movieId}`
       );
+
+
       //lookup the movie
+      api.fetchMovie(movieId).then(movie => {
+      	 this.setState({
+         pageHeader:this.state.movie[movieId].title,
+         currentMovieId: movieId
+        }); 
+      })
       
-      this.setState({
-        pageHeader:this.state.movie[movieId].title,
-        currentMovieId: movieId
-      }); 
 	};
     
     currentContent(){

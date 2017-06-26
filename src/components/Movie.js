@@ -4,13 +4,13 @@ class Movie extends Component {
 	render(){
 		return (
                <div className="Movie">
-                 {this.props.id}
+                 {this.props.plot}
                </div>
 			);
 	}
 }
 
 Movie.propTypes = {
-	id: PropTypes.number.isRequired
+	plot: PropTypes.string.isRequired
 }
 export default Movie;
