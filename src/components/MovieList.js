@@ -4,11 +4,11 @@ import ListPreview from './ListPreview';
 const MovieList = ({ movie, onMovieClick }) => (
   <div className="MovieList">
      
-	            {movie.map(movie =>
+	            {Object.keys(movie).map(movieId =>
                    <ListPreview 
-                    key = {movie.id} 
+                    key = {movieId} 
                     onClick = {onMovieClick} 
-                    {...movie}/>
+                    {...movie[movieId]}/>
 
 	            )}
 	
@@ -16,7 +16,7 @@ const MovieList = ({ movie, onMovieClick }) => (
 )
 
 MovieList.propTypes = {
-   movie: React.PropTypes.array,
+   movie: React.PropTypes.object,
    onMovieClick: React.PropTypes.func.isRequired,	
 };
 

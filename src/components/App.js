@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Header from './Header';
 import MovieList from './MovieList';
-
+import Movie from './Movie';
 
 const pushState = (obj,url) =>
   window.history.pushState(obj,'',url);
@@ -10,7 +10,7 @@ const pushState = (obj,url) =>
 class App extends React.Component {
 	state = {
 		pageHeader: 'To Do App',
-		movie: []
+		movie: {}
 	};   
 	componentDidMount() {
        axios.get('/api/movie')
@@ -33,14 +33,29 @@ class App extends React.Component {
          { currentMovieId: movieId},
          `/movie/${movieId}`
       );
+      //lookup the movie
+      
+      this.setState({
+        pageHeader:this.state.movie[movieId].title,
+        currentMovieId: movieId
+      }); 
 	};
+    
+    currentContent(){
+    	if(this.state.currentMovieId){
+    		return <Movie {...this.state.movie[this.state.currentMovieId]}/>;
+    	}
+    	return <MovieList 
+                 onMovieClick={this.fetchMovie}
+	             movie = {this.state.movie}/>;
+    }
+
 	render() {
 		return (
 	        <div className="App">
 	            <Header message={this.state.pageHeader}/>
-	            <MovieList 
-                 onMovieClick={this.fetchMovie}
-	             movie = {this.state.movie}/>
+	            {this.currentContent()}
+	            
 			</div>  
 			);
 	}
