@@ -9,7 +9,7 @@ class ListPreview extends Component {
 		return (
               
                 <div className="link ListPreview" onClick={this.handleClick}>
-        			<div className="category-name">
+        			<div className="movie-list">
            				{this.props.title}
         			</div>
      			</div>

@@ -1,13 +1,15 @@
-
+div.ListPreview{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 .ListPreview {
   margin: 1em;
   border: 1px solid #ccc;
-
-  .category-name {
+  
+  .movie-list {
     border-bottom: 1px solid #ccc;
     padding: 0.25em 0.5em;
     font-weight: bold;
-    background-color: #eee;
+    background-color: beige;
   }
 
   .list-name {
@@ -22,4 +24,8 @@
 .home-link {
   margin-top: 1em;
   color: #0000ee;
+}
+.Movie{
+  width: 23%;
+  margin:0 auto;
 }
